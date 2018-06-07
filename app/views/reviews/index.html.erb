@@ -3,6 +3,126 @@
     Reviews
     <a href="/reviews/new" class="btn btn-lg btn-success">New Review</a>
   </h1>
+</div><div class="row mb-1">
+  <div class="col-md-12">
+    <%= search_form_for @q, :class => collapse_search_form, :id => "reviews_filters" do |f| %>
+      <p class="lead">Narrow results:</p>
+
+        <div class="form-group">
+    <%= f.label :review_text_cont, "Review text contains" %>
+    <%= f.text_field :review_text_cont, :class => "form-control", :placeholder => "Review text contains" %>
+  </div>
+
+<div class="form-group">
+  <%= f.label :review_rating, "Review rating" %>
+  <div class="row">
+    <div class='col-md-6 mb-1'>
+      <%= f.text_field :review_rating_gteq, :class => "form-control", :placeholder => "Review rating greater than or equal to" %>
+    </div>
+    <div class='col-md-6'>
+      <%= f.text_field :review_rating_lteq, :class => "form-control", :placeholder => "Review rating less than or equal to" %>
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+          <%= f.label :review_date, "Review date" %>
+          <div class="row">
+            <div class='col-md-6 mb-1'>
+              <div class='input-group date' id='review_dategteqPicker'>
+                  <%= f.text_field :review_date_gteq, :class => "form-control", :placeholder => "Review date greater than or equal to" %>
+                  <span class="input-group-addon">
+                      <span class="glyphicon glyphicon-calendar"></span>
+                  </span>
+              </div>
+            </div>
+
+            <div class='col-md-6'>
+              <div class='input-group date' id='review_datelteqPicker'>
+                  <%= f.text_field :review_date_lteq, :class => "form-control", :placeholder => "Review date less than or equal to" %>
+                  <span class="input-group-addon">
+                      <span class="glyphicon glyphicon-calendar"></span>
+                  </span>
+              </div>
+            </div>
+          </div>
+      </div>
+      <script type="text/javascript">
+          $(function () {
+              $('#review_dategteqPicker').datetimepicker({
+                  format: 'YYYY-MM-DD hh:mm:SS'
+              });
+              $('#review_datelteqPicker').datetimepicker({
+                  useCurrent: false,
+                  format: 'YYYY-MM-DD hh:mm:SS'
+              });
+              $('#review_dategteqPicker').on("dp.change", function (e) {
+                  $('#review_datelteqPicker').data("DateTimePicker").minDate(e.date);
+              });
+              $('#review_datelteqPicker').on("dp.change", function (e) {
+                  $('#review_dategteqPicker').data("DateTimePicker").maxDate(e.date);
+              });
+          });
+      </script>
+
+<div class="form-group">
+    <%= f.label :review_id_cont, "Review contains" %>
+    <%= f.text_field :review_id_cont, :class => "form-control", :placeholder => "Review contains" %>
+  </div>
+
+<div class="form-group">
+          <%= f.label :created_at, "Created at" %>
+          <div class="row">
+            <div class='col-md-6 mb-1'>
+              <div class='input-group date' id='created_atgteqPicker'>
+                  <%= f.text_field :created_at_gteq, :class => "form-control", :placeholder => "Created at greater than or equal to" %>
+                  <span class="input-group-addon">
+                      <span class="glyphicon glyphicon-calendar"></span>
+                  </span>
+              </div>
+            </div>
+
+            <div class='col-md-6'>
+              <div class='input-group date' id='created_atlteqPicker'>
+                  <%= f.text_field :created_at_lteq, :class => "form-control", :placeholder => "Created at less than or equal to" %>
+                  <span class="input-group-addon">
+                      <span class="glyphicon glyphicon-calendar"></span>
+                  </span>
+              </div>
+            </div>
+          </div>
+      </div>
+      <script type="text/javascript">
+          $(function () {
+              $('#created_atgteqPicker').datetimepicker({
+                  format: 'YYYY-MM-DD hh:mm:SS'
+              });
+              $('#created_atlteqPicker').datetimepicker({
+                  useCurrent: false,
+                  format: 'YYYY-MM-DD hh:mm:SS'
+              });
+              $('#created_atgteqPicker').on("dp.change", function (e) {
+                  $('#created_atlteqPicker').data("DateTimePicker").minDate(e.date);
+              });
+              $('#created_atlteqPicker').on("dp.change", function (e) {
+                  $('#created_atgteqPicker').data("DateTimePicker").maxDate(e.date);
+              });
+          });
+      </script>
+
+        <div class="form-group">
+      <%= f.label :product_amazon_url_cont, "Product amazon_url contains" %>
+      <%= f.text_field :product_amazon_url_cont, :class => "form-control", :placeholder => "Product amazon_url contains" %>
+    </div>
+
+      <%= f.submit :class => "btn btn-primary btn-block mb-1" %>
+
+      <a href="/reviews" class="btn btn-default btn-block mb-1">Clear filters</a>
+    <% end %>
+    <a class="btn btn-default btn-block mb-1" data-toggle="collapse" href="#reviews_filters">
+      Show Filters
+    </a>
+  </div>
 </div>
 
 <div class="row">

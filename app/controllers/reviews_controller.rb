@@ -1,6 +1,7 @@
 class ReviewsController < ApplicationController
   def index
-    @reviews = Review.page(params[:page]).per(10)
+    @q = Review.ransack(params[:q])
+    @reviews = @q.result(:distinct => true).includes(:product).page(params[:page]).per(10)
 
     render("reviews/index.html.erb")
   end

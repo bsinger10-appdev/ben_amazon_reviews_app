@@ -1,4 +1,6 @@
 ActiveAdmin.register Review do
+
+ permit_params :product_number, :review_id, :review_date, :review_rating, :review_text
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #

@@ -1,0 +1,55 @@
+<!-- Validation failure messages -->
+<% if @product.errors.any? %>
+  <% @product.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Product #<%= @product.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_product/<%= @product.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for amazon_url -->
+      <div class="form-group">
+        <label for="amazon_url" class="control-label">
+          Amazon url
+        </label>
+
+        <input type="text" id="amazon_url" name="amazon_url" placeholder="Amazon url" class="form-control" value="<%= @product.amazon_url %>">
+      </div>
+
+      <!-- Label and input for product_name -->
+      <div class="form-group">
+        <label for="product_name" class="control-label">
+          Product name
+        </label>
+
+        <input type="text" id="product_name" name="product_name" placeholder="Product name" class="form-control" value="<%= @product.product_name %>">
+      </div>
+
+      <!-- Label and input for product_number -->
+      <div class="form-group">
+        <label for="product_number" class="control-label">
+          Product number
+        </label>
+
+        <input type="text" id="product_number" name="product_number" placeholder="Product number" class="form-control" value="<%= @product.product_number %>">
+      </div>
+
+      <button class="btn btn-warning">
+        Update Product
+      </button>
+      or
+      <a href="/products/<%= @product.id %>">Cancel</a>
+    </form>
+  </div>
+</div>

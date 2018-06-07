@@ -24,7 +24,7 @@
           Product number
         </label>
 
-        <input type="text" id="product_number" name="product_number" placeholder="Product number" class="form-control" value="<%= @review.product_number %>">
+        <%= select_tag(:product_number, options_from_collection_for_select(Product.all, :id, :amazon_url, @review.product_number), :class => "form-control") %>
       </div>
 
       <!-- Label and input for review_id -->

@@ -57,6 +57,62 @@
           </div>
         </li>
       <% end %>
+
+      <li class="list-group-item">
+        <form action="/create_review" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for product_number -->
+      <div class="form-group">
+        <label for="product_number" class="control-label">
+          Product number
+        </label>
+
+        <%= select_tag(:product_number, options_from_collection_for_select(Product.all, :id, :amazon_url), :class => "form-control") %>
+      </div>
+
+      <!-- Label and input for review_id -->
+      <div class="form-group">
+        <label for="review_id" class="control-label">
+          Review
+        </label>
+
+        <input type="text" id="review_id" name="review_id" placeholder="Review" class="form-control" value="">
+      </div>
+
+      <!-- Label and input for review_date -->
+      <div class="form-group">
+        <label for="review_date" class="control-label">
+          Review date
+        </label>
+
+        <input type="text" id="review_date" name="review_date" placeholder="Review date" class="form-control" value="">
+      </div>
+
+      <!-- Label and input for review_rating -->
+      <div class="form-group">
+        <label for="review_rating" class="control-label">
+          Review rating
+        </label>
+
+        <input type="text" id="review_rating" name="review_rating" placeholder="Review rating" class="form-control" value="">
+      </div>
+
+      <!-- Label and input for review_text -->
+      <div class="form-group">
+        <label for="review_text" class="control-label">
+          Review text
+        </label>
+
+        <input type="text" id="review_text" name="review_text" placeholder="Review text" class="form-control" value="">
+      </div>
+
+      <button class="btn btn-block btn-success">
+        Create Review
+      </button>
+    </form>
+      </li>
     </ul>
   </div>
 </div>
